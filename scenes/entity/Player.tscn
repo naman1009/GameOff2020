@@ -1,5 +1,145 @@
-[gd_scene format=2]
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://sprites/game.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 7.9011
+height = 16.5293
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.31117, 2.47959 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "leftidle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("game:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 144, 96, 32, 32 ), Rect2( 176, 96, 32, 32 ), Rect2( 208, 96, 32, 32 ), Rect2( 176, 96, 32, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("game2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -5.11439, -6.78241 ), Vector2( -5.11439, -3.78241 ), Vector2( -5.11439, -6.78241 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("game2:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("game:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "rightidle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("game:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 144, 96, 32, 32 ), Rect2( 176, 96, 32, 32 ), Rect2( 208, 96, 32, 32 ), Rect2( 176, 96, 32, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("game2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -5.11439, -6.78241 ), Vector2( -5.11439, -3.78241 ), Vector2( -5.11439, -6.78241 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("game2:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("game:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
+position = Vector2( 120.128, 60.0166 )
+script = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="game" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 144, 96, 32, 32 )
+
+[node name="game2" type="Sprite" parent="."]
+position = Vector2( -5.11439, -6.78241 )
+texture = ExtResource( 2 )
+offset = Vector2( 5.11439, 5.78241 )
+region_enabled = true
+region_rect = Rect2( 96, 8, 32, 24 )
+
+[node name="boxCollider" type="CollisionShape2D" parent="."]
+position = Vector2( 0.471937, -0.353954 )
+shape = SubResource( 1 )
+
+[node name="boxCollider2" type="CollisionShape2D" parent="."]
+position = Vector2( 0.825888, 13.7452 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/leftidle = SubResource( 4 )
+anims/rightidle = SubResource( 3 )
